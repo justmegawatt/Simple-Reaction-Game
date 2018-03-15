@@ -37,14 +37,22 @@
     <script type="text/javascript">
         function hideSpider() {
             document.getElementById("gamebox").style.backgroundImage = "none";
+            main();
         }
 
         function showSpider() {
             document.getElementById("gamebox").style.backgroundImage = "url('spider.png')"
         }
 
-        setTimeout(showSpider, 3000);
+        function randomSeconds() {
+            return 5000*Math.random();
+        }
 
+        function main() {
+            setTimeout(showSpider, randomSeconds());
+        }
+
+        main();
     </script>
 
 </body>
