@@ -10,9 +10,13 @@
 
     <style type="text/css">
 
+        #instructions {
+            text-align: center;
+        }
+
         #gamebox {
-            width: 300px;
-            height: 300px;
+            width: 500px;
+            height: 500px;
             margin: 0 auto;
             margin-top: 50px;
             box-shadow: 0px 0px 5px 10px #888,
@@ -33,9 +37,7 @@
         #yourtime {
             font-size: 2em;
             font-family: verdana, sans-serif;
-            width: 300px;
-            margin: 0 auto;
-            margin-top: 50px;
+            text-align: center;
         }
 
     </style>
@@ -45,10 +47,14 @@
 <body>
 
     <div id="container">
+            <div id="instructions">
+                <h1>Reaction Game</h1>
+                <p>Click on the spider as soon as it appears on screen!</p>
+            </div>
             <div id="gamebox">
                     <div id="spiderbox" onclick="hideSpider()"></div>
             </div>
-            <p id="yourtime">Your Time: <span id="time"></span></p>
+            <p id="yourtime">Your Time: <span id="time">0</span>s</p>
     </div>
 
     <script type="text/javascript">
@@ -76,8 +82,8 @@
         }
 
         function spiderToRandomPosition() {
-            randomTop = 168*Math.random() + "px";
-            randomLeft = 67*Math.random() + "px";
+            randomTop = 368*Math.random() + "px";
+            randomLeft = 267*Math.random() + "px";
             document.getElementById("spiderbox").style.top = randomTop;
             document.getElementById("spiderbox").style.left = randomLeft;
         }
