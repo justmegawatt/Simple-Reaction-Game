@@ -19,9 +19,23 @@
                         0px 0px 7px 20px #777,
                         0px 0px 7px 30px #666;
             background-color: #555;
+        }
+
+        #spiderbox {
+            width: 233px;
+            height: 132px;
+            position: relative;
             background-image: none;
             background-repeat: no-repeat;
             background-position: center;
+        }
+
+        #yourtime {
+            font-size: 2em;
+            font-family: verdana, sans-serif;
+            width: 300px;
+            margin: 0 auto;
+            margin-top: 50px;
         }
 
     </style>
@@ -31,21 +45,45 @@
 <body>
 
     <div id="container">
-            <div id="gamebox" onclick="hideSpider()"></div>
+            <div id="gamebox">
+                    <div id="spiderbox" onclick="hideSpider()"></div>
+            </div>
+            <p id="yourtime">Your Time: <span id="time"></span></p>
     </div>
 
     <script type="text/javascript">
+
+        var showTime;
+        var hideTime;
+        var reactionTime;
+
         function hideSpider() {
-            document.getElementById("gamebox").style.backgroundImage = "none";
+            hideTime = Date.now();
+            document.getElementById("spiderbox").style.backgroundImage = "none";
+            reactionTime = (hideTime-showTime)/1000;
+            updateTime(reactionTime);
             main();
         }
 
         function showSpider() {
-            document.getElementById("gamebox").style.backgroundImage = "url('spider.png')"
+            spiderToRandomPosition();
+            document.getElementById("spiderbox").style.backgroundImage = "url('spider.png')"
+            showTime = Date.now();
         }
 
         function randomSeconds() {
             return 5000*Math.random();
+        }
+
+        function spiderToRandomPosition() {
+            randomTop = 168*Math.random() + "px";
+            randomLeft = 67*Math.random() + "px";
+            document.getElementById("spiderbox").style.top = randomTop;
+            document.getElementById("spiderbox").style.left = randomLeft;
+        }
+
+        function updateTime(reactionTime) {
+            document.getElementById("time").innerHTML = reactionTime;
         }
 
         function main() {
